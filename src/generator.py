@@ -285,12 +285,15 @@ def generate():
                     <TextBlock Text="仅收录2025年1月起发布的整合包视频 · (bimal)" FontSize="11" TextWrapping="Wrap"
                          Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,4" />
                     <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,4" />
-                    <local:MyButton Text="📮 反馈" Padding="8,4,8,4" ToolTip="前往GitCode提交Issue"
+                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,0" />
+               </StackPanel>
+               <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <local:MyButton Text="⟳ 刷新主页" Padding="16,10,16,10"
+                         EventType="刷新主页" Margin="0,0,0,8" />
+                    <local:MyButton Text="📮 反馈" Padding="16,10,16,10"
+                         ToolTip="前往GitCode提交Issue"
                          EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" />
                </StackPanel>
-               <local:MyButton Grid.Column="1" Text="⟳ 刷新主页" Padding="16,10,16,10"
-                    VerticalAlignment="Center" EventType="刷新主页" />
           </Grid>
      </StackPanel>
 </local:MyCard>'''
