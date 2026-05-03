@@ -15,8 +15,8 @@ import requests
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 REF = "https://www.bilibili.com"
 
-CACHE_FILE = Path(__file__).parent / "download_links_cache.json"
-MODPACK_FILE = Path(__file__).parent / "modpack_final.json"
+CACHE_FILE = Path(__file__).parent.parent / "data" / "download_links_cache.json"
+MODPACK_FILE = Path(__file__).parent.parent / "data" / "modpack_final.json"
 
 DOWNLOAD_PATTERNS = [
     r'curseforge\.com', r'modrinth\.com', r'mcmod\.cn',

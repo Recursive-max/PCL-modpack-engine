@@ -8,11 +8,11 @@ import hashlib, json, re
 from datetime import datetime
 from pathlib import Path
 
-OUTPUT = Path(__file__).parent / "Custom.xaml"
-VERSION = Path(__file__).parent / "version.ini"
-MODPACK_FILE = Path(__file__).parent / "modpack_final.json"
-LINKS_CACHE = Path(__file__).parent / "download_links_cache.json"
-SEED_FILE = Path(__file__).parent / "seed_modpacks.json"
+OUTPUT = Path(__file__).parent.parent / "output" / "Custom.xaml"
+VERSION = Path(__file__).parent.parent / "data" / "version.ini"
+MODPACK_FILE = Path(__file__).parent.parent / "data" / "modpack_final.json"
+LINKS_CACHE = Path(__file__).parent.parent / "data" / "download_links_cache.json"
+SEED_FILE = Path(__file__).parent.parent / "data" / "seed_modpacks.json"
 
 # B站MC热门视频（定期更新）
 HOT_VIDEOS = [
