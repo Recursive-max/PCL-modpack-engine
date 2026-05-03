@@ -45,26 +45,6 @@ https://raw.gitcode.com/2401_84211770/PCL2-modpack-engine/raw/main/output/Custom
 
 ---
 
-## 📁 项目结构
-
-```
-pcl2/
-├── src/               ← 生成脚本
-│   ├── generator.py      主页生成器
-│   └── scrape_links.py   下载链接爬虫
-├── data/              ← 数据文件
-│   ├── seed_modpacks.json    种子整合包
-│   ├── modpack_final.json    整合包终表
-│   ├── modpack_ranking.json  排名数据
-│   └── ...
-├── output/            ← PCL2 直读
-│   ├── Custom.xaml        主页文件
-│   └── credits.html       致谢页面
-└── README.md
-```
-
----
-
 ## ⚙ 技术栈
 
 - **XAML** — PCL2 原生自定义主页
