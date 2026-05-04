@@ -1,5 +1,7 @@
 # MyWorld · PCL2 整合包推荐引擎
 
+![项目横幅](https://raw.gitcode.com/2401_84211770/PCL2-modpack-engine/raw/main/docs/images/banner.png)
+
 [![更新周期](https://img.shields.io/badge/更新-每日自动-8A2BE2)](https://gitcode.com/2401_84211770/PCL2-modpack-engine)
 [![许可证](https://img.shields.io/badge/许可证-MIT%2FCC--BY--NC--SA--4.0-green)](LICENSE-CODE)
 
