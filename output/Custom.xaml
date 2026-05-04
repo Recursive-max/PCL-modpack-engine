@@ -2,8 +2,8 @@
   ═══════════════════════════════════════════════
   PCL2 整合包推荐引擎 v10
   数据源: B站 + BBSMC + CurseForge + Modrinth
-  📥BBSMC:8 📥直链:1 🎬B站:13
-  更新: (bimal)
+  📥BBSMC:8 📥直链:0 🎬B站:13
+  更新: 2026-05-04 07:01
   ═══════════════════════════════════════════════
 -->
 
@@ -362,11 +362,11 @@
                <StackPanel Grid.Column="0">
                     <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                          Foreground="{DynamicResource ColorBrush1}" Margin="0,0,0,8" />
-                    <TextBlock Text="By GDSGDHG" FontSize="13" TextWrapping="Wrap"
+                    <TextBlock Text="By GDSGDHG · v10" FontSize="13" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush4}" Margin="0,0,0,6" />
                     <TextBlock Text="数据来源: B站 · BBSMC · CurseForge · Modrinth" FontSize="12" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush5}" Margin="0,0,0,4" />
-                    <TextBlock Text="仅收录2025年1月起发布的整合包视频 · (bimal)" FontSize="11" TextWrapping="Wrap"
+                    <TextBlock Text="最后更新: 2026-05-04 07:01 · 共22个整合包" FontSize="11" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush6}" Margin="0,0,0,4" />
                     <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush6}" Margin="0,0,0,0" />
