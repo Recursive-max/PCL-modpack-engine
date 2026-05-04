@@ -19,6 +19,7 @@ PCL2 整合包推荐引擎是一个用于 PCL2 启动器的联网自定义主页
   - [版权声明](#版权声明)
     - [内容部分](#内容部分)
     - [代码部分](#代码部分)
+  - [免责声明](#免责声明)
 
 ---
 
@@ -112,13 +113,6 @@ https://raw.gitcode.com/2401_84211770/PCL2-modpack-engine/raw/main/output/Custom
 
 ---
 
-## 免责声明
-
-> [!IMPORTANT]
-> **重要声明**：本项目仅提供 Minecraft 整合包相关信息的整理、推荐和跳转入口，不托管第三方整合包文件，不代表任何平台或作者的官方立场。页面中涉及的整合包、视频、图片、名称和链接，其版权与解释权归原作者、发布者或对应平台所有。如果相关内容存在侵权、失效或不适合展示的情况，请通过 [Issue](https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues) 联系删除或修改。
-
----
-
 ## 鸣谢
 
 - **[龙腾猫跃](https://afdian.com/a/LTCat)** — **[PCL2](https://github.com/Meloong-Git/PCL)** 启动器作者
@@ -143,3 +137,10 @@ https://raw.gitcode.com/2401_84211770/PCL2-modpack-engine/raw/main/output/Custom
 
 - **范围**：`src/` 目录下的 Python 脚本、`data/` 目录下的版本与配置脚本
 - **采用** **[MIT License](LICENSE-CODE)** 许可
+
+---
+
+## 免责声明
+
+> [!IMPORTANT]
+> **重要声明**：本项目仅提供 Minecraft 整合包相关信息的整理、推荐和跳转入口，不托管第三方整合包文件，不代表任何平台或作者的官方立场。页面中涉及的整合包、视频、图片、名称和链接，其版权与解释权归原作者、发布者或对应平台所有。如果相关内容存在侵权、失效或不适合展示的情况，请通过 [Issue](https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues) 联系删除或修改。
