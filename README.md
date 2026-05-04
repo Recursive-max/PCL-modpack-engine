@@ -1,4 +1,4 @@
-# MyWorld · PCL2 整合包推荐引擎
+# PCL2 整合包推荐引擎
 
 ![项目横幅](https://raw.gitcode.com/2401_84211770/PCL2-modpack-engine/raw/main/docs/images/banner.png)
 
@@ -8,7 +8,7 @@
 > **在 Plain Craft Launcher 2 中展示 Minecraft 热门整合包推荐主页**  
 > Gen X Soft Club 暗黑中世纪风格 · 每日自动更新 · 多平台数据聚合
 
-- [MyWorld · PCL2 整合包推荐引擎](#myworld--pcl2-整合包推荐引擎)
+- [PCL2 整合包推荐引擎](#pcl2-整合包推荐引擎)
   - [核心功能](#核心功能)
   - [使用说明](#使用说明)
   - [内容模块](#内容模块)

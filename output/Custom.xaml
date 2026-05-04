@@ -1,6 +1,6 @@
 <!--
   ═══════════════════════════════════════════════
-  PCL2 · MyWorld B站热门整合包推荐 v10
+  PCL2 整合包推荐引擎 v10
   数据源: B站 + BBSMC + CurseForge + Modrinth
   📥BBSMC:8 📥直链:1 🎬B站:13
   更新: (bimal)
@@ -15,7 +15,7 @@
           <TextBlock Text="感谢您订阅 Minecraft 推荐引擎" FontSize="15" FontWeight="Bold"
                Foreground="{DynamicResource ColorBrush1}"
                HorizontalAlignment="Center" />
-          <TextBlock Text="MyWorld · B站热门整合包 · 每日自动更新" FontSize="11"
+          <TextBlock Text="PCL2 · 整合包推荐 · 每日自动更新" FontSize="11"
                Foreground="{DynamicResource ColorBrush4}"
                HorizontalAlignment="Center" Margin="0,4,0,0" />
      </StackPanel>
@@ -360,7 +360,7 @@
                     <ColumnDefinition Width="Auto" />
                </Grid.ColumnDefinitions>
                <StackPanel Grid.Column="0">
-                    <TextBlock Text="MyWorld · 整合包推荐引擎" FontSize="18" FontWeight="Bold"
+                    <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                          Foreground="{DynamicResource ColorBrush1}" Margin="0,0,0,8" />
                     <TextBlock Text="By GDSGDHG" FontSize="13" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush4}" Margin="0,0,0,6" />
