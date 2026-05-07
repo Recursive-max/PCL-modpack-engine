@@ -358,19 +358,17 @@ def generate():
 -->
 
 <!-- ================================ -->
-<!--  ⛏ 顶部横幅 · 方块大厅   -->
+<!-- ================================ -->
+<!--  顶部横幅  -->
 <!-- ================================ -->
 <local:MyCard Margin="0,0,0,16" Title="">
-     <StackPanel Margin="20,20,20,16">
+     <StackPanel Margin="20,22,20,20">
           <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
                HorizontalAlignment="Center" />
-          <TextBlock Text="聚合 B站 · BBSMC · CurseForge · Modrinth 的 Minecraft 整合包推荐主页" FontSize="11"
+          <TextBlock Text="聚合 B站 / BBSMC / CurseForge / Modrinth" FontSize="10"
                Foreground="{{DynamicResource ColorBrush5}}"
                HorizontalAlignment="Center" Margin="0,6,0,0" />
-          <TextBlock Text="PCL2 · 整合包推荐 · 每日更新 · 数据仅供参考" FontSize="10"
-               Foreground="{{DynamicResource ColorBrush6}}"
-               HorizontalAlignment="Center" Margin="0,5,0,0" />
      </StackPanel>
 </local:MyCard>
 
