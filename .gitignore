@@ -25,3 +25,7 @@ desktop.ini
 *.tar.gz
 *.sql
 *.bak
+
+# PCL2 提取的图标（从 PCL2.exe 提取，不入库）
+extracted_icons/
+icons/

@@ -1,259 +1,543 @@
 <!--
   ═══════════════════════════════════════════════
-  PCL2 整合包推荐引擎
-  数据源: B站 + BBSMC + CurseForge + Modrinth
-  📥BBSMC:4 🎬B站视频:28 📥直链下载:10
-  更新: 2026-05-06 22:00
+   PCL2 整合包推荐引擎 · 暗黑中世纪风格设计
+   数据源: B站 + BBSMC + CurseForge + Modrinth
+   📥BBSMC:4 🎬B站视频:28 📥直链下载:13
+   更新: 2026-05-07 13:06
   ═══════════════════════════════════════════════
 -->
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  顶部横幅  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  ⛏ 顶部横幅 · 方块大厅   -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,16" Title="🏠">
-     <StackPanel Margin="16,18,16,14">
-          <TextBlock Text="感谢您订阅 PCL2 整合包推荐引擎" FontSize="15" FontWeight="Bold"
+     <StackPanel Margin="20,20,20,16">
+          <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                Foreground="{DynamicResource ColorBrush1}"
                HorizontalAlignment="Center" />
-          <TextBlock Text="聚合 B站 / BBSMC / CurseForge / Modrinth 的 Minecraft 整合包推荐主页" FontSize="11"
+          <TextBlock Text="聚合 B站 · BBSMC · CurseForge · Modrinth 的 Minecraft 整合包推荐主页" FontSize="11"
                Foreground="{DynamicResource ColorBrush5}"
-               HorizontalAlignment="Center" Margin="0,4,0,0" />
-          <TextBlock Text="PCL2 · 整合包推荐 · 每日自动更新 · 数据仅供参考，非广告推荐" FontSize="10"
+               HorizontalAlignment="Center" Margin="0,6,0,0" />
+          <TextBlock Text="PCL2 · 整合包推荐 · 每日更新 · 数据仅供参考" FontSize="10"
                Foreground="{DynamicResource ColorBrush6}"
-               HorizontalAlignment="Center" Margin="0,4,0,0" />
+               HorizontalAlignment="Center" Margin="0,5,0,0" />
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  快速导航  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
-<local:MyCard Margin="0,0,0,20" Title="⚡ 快速导航" CanSwap="True">
-     <StackPanel Margin="20,28,20,18">
+<!-- ================================ -->
+<!--  🔴 快速导航 · 四大传送门   -->
+<!-- ================================ -->
+<local:MyCard Margin="0,0,0,20" Title="⚡️ 快速导航" CanSwap="True">
+     <StackPanel Margin="24,30,24,20">
           <local:MyHint IsWarn="False" Theme="Blue"
                Text="常用资源站点一键直达 · B站搜索 + CurseForge + Modrinth + BBSMC 四大数据源"
-               Margin="0,0,0,12" />
+               Margin="0,0,0,14" />
           <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-               <local:MyButton Text="🎬 B站MC区" Margin="6,0,6,0" Padding="14,8,14,8"
+               <local:MyButton Margin="5,0,5,0" Padding="14,8,14,8" Height="36"
                     ToolTip="搜索Minecraft整合包视频"
-                    EventType="打开网页" EventData="https://search.bilibili.com/all?keyword=Minecraft+整合包&amp;order=click" />
-               <local:MyButton Text="📥 CurseForge" Margin="6,0,6,0" Padding="14,8,14,8"
+                    EventType="打开网页" EventData="https://search.bilibili.com/all?keyword=Minecraft+整合包&amp;order=click">
+                    <StackPanel Orientation="Horizontal">
+                         <local:MyImage Width="16" Height="16"
+                              Source="pack://application:,,,/images/Blocks/RedstoneBlock.png"
+                              VerticalAlignment="Center" />
+                         <TextBlock Text="B站MC区" VerticalAlignment="Center"
+                              Margin="4,0,0,0" />
+                    </StackPanel>
+               </local:MyButton>
+               <local:MyButton Margin="5,0,5,0" Padding="14,8,14,8" Height="36"
                     ToolTip="全球最大MC模组平台"
-                    EventType="打开网页" EventData="https://www.curseforge.com/minecraft/modpacks" />
-               <local:MyButton Text="📦 Modrinth" Margin="6,0,6,0" Padding="14,8,14,8"
+                    EventType="打开网页" EventData="https://www.curseforge.com/minecraft/modpacks">
+                    <StackPanel Orientation="Horizontal">
+                         <local:MyImage Width="16" Height="16"
+                              Source="pack://application:,,,/images/Blocks/Anvil.png"
+                              VerticalAlignment="Center" />
+                         <TextBlock Text="CurseForge" VerticalAlignment="Center"
+                              Margin="4,0,0,0" />
+                    </StackPanel>
+               </local:MyButton>
+               <local:MyButton Margin="5,0,5,0" Padding="14,8,14,8" Height="36"
                     ToolTip="开源MC整合包平台"
-                    EventType="打开网页" EventData="https://modrinth.com/modpacks" />
-               <local:MyButton Text="🏠 BBSMC" Margin="6,0,6,0" Padding="14,8,14,8"
+                    EventType="打开网页" EventData="https://modrinth.com/modpacks">
+                    <StackPanel Orientation="Horizontal">
+                         <local:MyImage Width="16" Height="16"
+                              Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                              VerticalAlignment="Center" />
+                         <TextBlock Text="Modrinth" VerticalAlignment="Center"
+                              Margin="4,0,0,0" />
+                    </StackPanel>
+               </local:MyButton>
+               <local:MyButton Margin="5,0,5,0" Padding="14,8,14,8" Height="36"
                     ToolTip="中文MC资源下载站"
-                    EventType="打开网页" EventData="https://bbsmc.net/modpacks" />
+                    EventType="打开网页" EventData="https://bbsmc.net/modpacks">
+                    <StackPanel Orientation="Horizontal">
+                         <local:MyImage Width="16" Height="16"
+                              Source="pack://application:,,,/images/Blocks/Grass.png"
+                              VerticalAlignment="Center" />
+                         <TextBlock Text="BBSMC" VerticalAlignment="Center"
+                              Margin="4,0,0,0" />
+                    </StackPanel>
+               </local:MyButton>
           </StackPanel>
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  整合包推荐  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  🏗 整合包推荐 · 方块精选   -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,20" Title="Minecraft 整合包推荐" CanSwap="True">
-     <StackPanel Margin="24,35,24,15">
-          <TextBlock Text="Minecraft 整合包推荐" FontSize="22" FontWeight="Bold"
+     <StackPanel Margin="24,35,24,18">
+          <TextBlock Text="整合包推荐" FontSize="22" FontWeight="Bold"
+               Foreground="{DynamicResource ColorBrush1}"
+               HorizontalAlignment="Center" Margin="0,0,0,12" />
+          <local:MyHint IsWarn="False" Theme="Yellow"
+               Text="🔥硬核 🔧科技 🏰冒险 🧙魔法 🌿休闲 🗺空岛 🎮宝可梦 ⚡️混合 | 🎬B站视频推荐 · 下方 📥下载链接"
+               Margin="0,0,0,14" />
+
+          <Grid>
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <StackPanel Grid.Column="0">
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="你好，新世代"
+                    Info="▸ 🎬B站 · 27万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1PbAczPE4o/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="落幕曲"
+                    Info="▸ 🎬B站 · 265万播放 · 1.20.1 · 📥BS"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1etG5zCEvm/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Better MC"
+                    Info="▸ 🎬B站 · 175万播放 · 1.20.1 · 📥CF"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1DrE2z1EcF/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="BMC4"
+                    Info="▸ 🎬B站 · 175万播放 · 1.20.1 · 📥CF"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1DrE2z1EcF/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Cobblemon"
+                    Info="▸ 🎬B站 · 149万播放 · 1.20.1 · 📥MR"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1xBmdBDEvU/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="我的世界方块宝可梦"
+                    Info="▸ 🎬B站 · 149万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1xBmdBDEvU/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="ATM9"
+                    Info="▸ 🎬B站 · 118万播放 · 1.20.1 · 📥CF"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1JGZpYjEDo/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="More Biomes"
+                    Info="▸ 🎬B站 · 1.8万播放 · 基岩版"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1whHrzfEU7/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="远梦之棺"
+                    Info="▸ 🎬B站 · 1.4万播放 · 1.20.1 · 📥BS"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1u3RVBRELJ/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="元素觉醒"
+                    Info="▸ 🎬B站 · 37万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1T9GFz8EN4/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="咒次元"
+                    Info="▸ 🎬B站 · 14万播放 · 1.20.1 · 📥CF/BS/百科"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1QN6HYnE5W/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="凡人修仙传"
+                    Info="▸ 🎬B站 · 25万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1KEu4ztEQH/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="恐惧深渊"
+                    Info="▸ 🎬B站 · 49万播放 · 1.19.2 · 📥百科"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1fg4y1X7KG/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Egg.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="随机空岛"
+                    Info="▸ 🎬B站 · 46万播放 · 1.16.5-1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1hqioYrEwX/"
+                    Type="Clickable" />
+          </Grid>
+               </StackPanel>
+               <StackPanel Grid.Column="2">
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="森罗万藏"
+                    Info="▸ 🎬B站 · 42万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1FsE2ztEEA/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="DawnCraft"
+                    Info="▸ 🎬B站 · 38万播放 · 1.18.2 · 📥CF"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1Km411C7Mx/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="GTNH"
+                    Info="▸ 🎬B站 · 34万播放 · 1.7.10"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1BpF6zfEKh/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Cursed Walking"
+                    Info="▸ 🎬B站 · 30万播放 · 1.20.1 · 📥CF"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1Yf421Z7G8/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="龙之冒险：新征程"
+                    Info="▸ 🎬B站 · 132万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1dX9ZYcELf/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="齿轮盛宴"
+                    Info="▸ 🎬B站 · 65万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1zvNozWECh/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="殉道之路"
+                    Info="▸ 🎬B站 · 58万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1U1LxzrEnE/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="史诗战斗冒险"
+                    Info="▸ 🎬B站 · 45万播放 · 1.20.1 · 📥BS"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV14yBwByEWV/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="探索自然2"
+                    Info="▸ 🎬B站 · 43万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1gRreYbEkg/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="香草纪元:食旅纪行"
+                    Info="▸ 🎬B站 · 23万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV13mFWzBEkg/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="CTI 匠魂科技"
+                    Info="▸ 🎬B站 · 8.8万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1mv411771N/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="BFF"
+                    Info="▸ 🎬B站 · 8.0万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1zMWKeNEhg/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Pure Create 6.0"
+                    Info="▸ 🎬B站 · 13万播放 · 1.20.1 · 📥百科"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1SK421t784/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="终焉决斗"
+                    Info="▸ 🎬B站 · 6.0万播放 · 1.20.1"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1pvhYz4Eub/"
+                    Type="Clickable" />
+          </Grid>
+               </StackPanel>
+          </Grid>
+     </StackPanel>
+</local:MyCard>
+
+<!-- ================================ -->
+<!--  🎬 视频推荐 · 映像大厅   -->
+<!-- ================================ -->
+<local:MyCard Margin="0,0,0,20" Title="Minecraft 视频推荐" CanSwap="True" IsSwaped="True">
+     <StackPanel Margin="24,32,24,18">
+          <TextBlock Text="视频推荐" FontSize="22" FontWeight="Bold"
                Foreground="{DynamicResource ColorBrush1}"
                HorizontalAlignment="Center" Margin="0,0,0,10" />
-          <local:MyHint IsWarn="False" Theme="Yellow"
-               Text="🔥硬核 ⚙科技 🏰冒险 🧙魔法 🌿休闲 🗺空岛 🎮宝可梦 ⚡混合 | 🎬B站视频推荐 · 下方 📥下载链接"
-               Margin="0,0,0,12" />
-
-          <Grid>
-               <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="16" />
-                    <ColumnDefinition Width="*" />
-               </Grid.ColumnDefinitions>
-               <StackPanel Grid.Column="0">
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🆕 ⚡混合 🏰冒险  你好，新世代"
-                         Info="▸ 🎬B站 · 27万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1PbAczPE4o/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🧙魔法  落幕曲"
-                         Info="▸ 🎬B站 · 265万播放 · 1.20.1 · 📥BS"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1etG5zCEvm/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🌿休闲  Better MC"
-                         Info="▸ 🎬B站 · 175万播放 · 1.20.1 · 📥CF"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1DrE2z1EcF/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🌿休闲  BMC4"
-                         Info="▸ 🎬B站 · 175万播放 · 1.20.1 · 📥CF"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1DrE2z1EcF/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🎮宝可梦  Cobblemon"
-                         Info="▸ 🎬B站 · 149万播放 · 1.20.1 · 📥MR"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1xBmdBDEvU/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🎮宝可梦  我的世界方块宝可梦"
-                         Info="▸ 🎬B站 · 149万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1xBmdBDEvU/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚡混合  ATM9"
-                         Info="▸ 🎬B站 · 118万播放 · 1.20.1 · 📥CF"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1JGZpYjEDo/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="📦其他  More Biomes"
-                         Info="▸ 🎬B站 · 1.8万播放 · 基岩版"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1whHrzfEU7/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🧙魔法  远梦之棺"
-                         Info="▸ 🎬B站 · 1.4万播放 · 1.20.1 · 📥BS"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1u3RVBRELJ/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🎮RPG 🧙魔法  元素觉醒"
-                         Info="▸ 🎬B站 · 37万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1T9GFz8EN4/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🧙魔法 🏰冒险  咒次元"
-                         Info="▸ 🎬B站 · 14万播放 · 1.20.1 · 📥CF/BS/百科"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1QN6HYnE5W/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🧙魔法 🏰冒险  凡人修仙传"
-                         Info="▸ 🎬B站 · 25万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1KEu4ztEQH/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="💀恐怖  恐惧深渊"
-                         Info="▸ 🎬B站 · 49万播放 · 1.19.2 · 📥百科"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1fg4y1X7KG/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🗺空岛  随机空岛"
-                         Info="▸ 🎬B站 · 46万播放 · 1.16.5-1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1hqioYrEwX/"
-                         Type="Clickable" />
-               </StackPanel>
-               <StackPanel Grid.Column="2">
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🌿休闲  森罗万藏"
-                         Info="▸ 🎬B站 · 42万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1FsE2ztEEA/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🗡RPG  DawnCraft"
-                         Info="▸ 🎬B站 · 38万播放 · 1.18.2 · 📥CF"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1Km411C7Mx/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚙科技  GTNH"
-                         Info="▸ 🎬B站 · 34万播放 · 1.7.10"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1BpF6zfEKh/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🧟末日  Cursed Walking"
-                         Info="▸ 🎬B站 · 30万播放 · 1.20.1 · 📥CF"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1Yf421Z7G8/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🏰冒险 🧙魔法  龙之冒险：新征程"
-                         Info="▸ 🎬B站 · 132万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1dX9ZYcELf/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚙科技  齿轮盛宴"
-                         Info="▸ 🎬B站 · 65万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1zvNozWECh/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🗡RPG 🧙魔法  殉道之路"
-                         Info="▸ 🎬B站 · 58万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1U1LxzrEnE/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🗡RPG ⚔战斗  史诗战斗冒险"
-                         Info="▸ 🎬B站 · 45万播放 · 1.20.1 · 📥BS"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV14yBwByEWV/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🌿休闲 🏰冒险  探索自然2"
-                         Info="▸ 🎬B站 · 43万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1gRreYbEkg/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🌿休闲  香草纪元:食旅纪行"
-                         Info="▸ 🎬B站 · 23万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV13mFWzBEkg/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚙科技  CTI 匠魂科技"
-                         Info="▸ 🎬B站 · 8.8万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1mv411771N/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚔战斗  BFF"
-                         Info="▸ 🎬B站 · 8.0万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1zMWKeNEhg/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="⚙科技  Pure Create 6.0"
-                         Info="▸ 🎬B站 · 13万播放 · 1.20.1 · 📥百科"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1SK421t784/"
-                         Type="Clickable" />
-                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="🗡RPG ⚔战斗  终焉决斗"
-                         Info="▸ 🎬B站 · 6.0万播放 · 1.20.1"
-                         EventType="打开网页"
-                         EventData="https://www.bilibili.com/video/BV1pvhYz4Eub/"
-                         Type="Clickable" />
-               </StackPanel>
-          </Grid>
-     </StackPanel>
-</local:MyCard>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  MC热门视频  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
-<local:MyCard Margin="0,0,0,20" Title="Minecraft 视频推荐" CanSwap="True" IsSwaped="True">
-     <StackPanel Margin="24,30,24,15">
-          <TextBlock Text="Minecraft 视频推荐" FontSize="22" FontWeight="Bold"
-               Foreground="{DynamicResource ColorBrush1}"
-               HorizontalAlignment="Center" Margin="0,0,0,8" />
           <local:MyHint IsWarn="False" Theme="Red"
                Text="🎬 知名UP主空间 + 🔥 热门搜索主题 · 涵盖实况/红石/建筑/模组/动画/速通"
-               Margin="0,0,0,12" />
+               Margin="0,0,0,14" />
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -263,207 +547,452 @@
                     <ColumnDefinition Width="*" />
                </Grid.ColumnDefinitions>
                <StackPanel Grid.Column="0">
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎬  籽岷 · MC模组推荐合集"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/686127/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🔧  黒山大叔 · 红石科技"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/19428259/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="😂  老迪来咯 · MC搞笑实况"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/27996286/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🏗  Nor叔 · MC极限生存"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/17425003/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎮  大炒面制造者Cen · MC热门"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/14890801/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🌟  Minecraft官方频道"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://space.bilibili.com/43310262/video"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎨  🔥 年度MC十大神包289万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1p1421C75Q/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎯  🔥 一个包2000万下载256万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV15M4m127dH/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="⚔  🔥 10款冒险向神包215万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1J24y1R7GT/"
-               Type="Clickable" />
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="籽岷 · MC模组推荐合集"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/686127/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="黒山大叔 · 红石科技"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/19428259/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="老迪来咯 · MC搞笑实况"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/27996286/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Cobblestone.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Nor叔 · MC极限生存"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/17425003/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="大炒面制造者Cen · MC热门"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/14890801/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Minecraft官方频道"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://space.bilibili.com/43310262/video"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 年度MC十大神包289万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1p1421C75Q/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 一个包2000万下载256万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV15M4m127dH/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 10款冒险向神包215万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1J24y1R7GT/"
+                    Type="Clickable" />
+          </Grid>
                </StackPanel>
                <StackPanel Grid.Column="2">
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="📖  🔥 五个僵尸末日神包124万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1Zp4y1o71R/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎤  🔥 远梦之棺 超长版93万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1Z4zYBnE4T/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🤣  🔥 恐怖模组排名92万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1ff5KzTE9A/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="⏱  🔥 ATM10双人生存81万"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://www.bilibili.com/video/BV1ugG1z4EG8/"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🏰  MC热门作品搜索"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Minecraft+整合包+推荐"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="⚡  我的世界搞笑瞬间"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=我的世界+搞笑"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="📦  MC速通世界纪录"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Minecraft+速通"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="✨  我的世界建筑欣赏"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=我的世界+建筑"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🎞  MC红石机械"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Create+机械动力+Minecraft"
-               Type="Clickable" />
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Egg.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 五个僵尸末日神包124万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1Zp4y1o71R/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 远梦之棺 超长版93万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1Z4zYBnE4T/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 恐怖模组排名92万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1ff5KzTE9A/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="🔥 ATM10双人生存81万"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://www.bilibili.com/video/BV1ugG1z4EG8/"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Cobblestone.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC热门作品搜索"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Minecraft+整合包+推荐"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="我的世界搞笑瞬间"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=我的世界+搞笑"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC速通世界纪录"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Minecraft+速通"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="我的世界建筑欣赏"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=我的世界+建筑"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Fabric.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC红石机械"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Create+机械动力+Minecraft"
+                    Type="Clickable" />
+          </Grid>
                </StackPanel>
                <StackPanel Grid.Column="4">
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="💯  我的世界模组推荐"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=我的世界+模组+推荐"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="👥  MC光影材质展示"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Minecraft+光影"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🔥  Minecraft动画短片"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Minecraft+动画"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="💀  我的世界100天挑战"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=我的世界+100天"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🗡️  MC多人生存系列"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=MC+多人+生存"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🛡️  MC空岛生存"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=MC+空岛+生存"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🧙  MC宝可梦世界"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=MC+宝可梦+整合包"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🌍  MC魔法冒险"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=Minecraft+魔法+整合包"
-               Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0"
-               Title="🏆  MC暮色森林"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="https://search.bilibili.com/all?keyword=暮色森林+Minecraft"
-               Type="Clickable" />
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="我的世界模组推荐"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=我的世界+模组+推荐"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Egg.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC光影材质展示"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Minecraft+光影"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Grass.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="Minecraft动画短片"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Minecraft+动画"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="我的世界100天挑战"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=我的世界+100天"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/GoldBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC多人生存系列"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=MC+多人+生存"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Cobblestone.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC空岛生存"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=MC+空岛+生存"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/Anvil.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC宝可梦世界"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=MC+宝可梦+整合包"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/CommandBlock.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC魔法冒险"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=Minecraft+魔法+整合包"
+                    Type="Clickable" />
+          </Grid>
+          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="MC暮色森林"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="https://search.bilibili.com/all?keyword=暮色森林+Minecraft"
+                    Type="Clickable" />
+          </Grid>
                </StackPanel>
           </Grid>
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  页脚  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  ⛏ 关于 · 方块工坊      -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,0" Title="关于">
-     <StackPanel Margin="24,32,24,28">
+     <StackPanel Margin="24,35,24,30">
+
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                </Grid.ColumnDefinitions>
                <StackPanel Grid.Column="0">
-                    <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
-                         Foreground="{DynamicResource ColorBrush1}" Margin="0,0,0,8" />
+                    <TextBlock Text="📜 PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
+                         Foreground="{DynamicResource ColorBrush1}" Margin="0,0,0,10" />
                     <TextBlock Text="By GDSGDHG · 版本号见 output/version.txt" FontSize="13" TextWrapping="Wrap"
-                         Foreground="{DynamicResource ColorBrush4}" Margin="0,0,0,6" />
+                         Foreground="{DynamicResource ColorBrush4}" Margin="0,0,0,8" />
                     <TextBlock Text="数据来源: B站视频 + CurseForge/Modrinth 下载" FontSize="12" TextWrapping="Wrap"
-                         Foreground="{DynamicResource ColorBrush5}" Margin="0,0,0,4" />
-                    <TextBlock Text="最后更新: 2026-05-06 · 共28个整合包" FontSize="11" TextWrapping="Wrap"
-                         Foreground="{DynamicResource ColorBrush6}" Margin="0,0,0,4" />
+                         Foreground="{DynamicResource ColorBrush5}" Margin="0,0,0,6" />
+                    <TextBlock Text="最后更新: 2026-05-07 · 共28个整合包" FontSize="11" TextWrapping="Wrap"
+                         Foreground="{DynamicResource ColorBrush6}" Margin="0,0,0,6" />
                     <TextBlock Text="数据仅供参考，非广告推荐" FontSize="10" TextWrapping="Wrap"
-                         Foreground="{DynamicResource ColorBrush7}" Margin="0,0,0,2" />
+                         Foreground="{DynamicResource ColorBrush7}" Margin="0,0,0,4" />
                     <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11" TextWrapping="Wrap"
                          Foreground="{DynamicResource ColorBrush6}" Margin="0,0,0,0" />
                </StackPanel>
                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <local:MyButton Text="⟳ 刷新主页" Padding="16,10,16,10"
+                    <local:MyButton Text="⟳ 刷新" Width="80" Padding="12,8,12,8"
+                         ToolTip="刷新当前主页内容"
                          EventType="刷新主页" Margin="0,0,0,8" />
-                    <local:MyButton Text="📮 反馈" Padding="16,10,16,10"
+                    <local:MyButton Text="📮 反馈" Width="80" Padding="12,8,12,8"
                          ToolTip="前往GitCode提交Issue"
-                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" />
+                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" Margin="0,0,0,0" />
                </StackPanel>
           </Grid>
      </StackPanel>

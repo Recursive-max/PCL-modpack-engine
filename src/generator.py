@@ -50,8 +50,100 @@ HOT_VIDEOS = [
     ("MC暮色森林", "https://search.bilibili.com/all?keyword=暮色森林+Minecraft"),
 ]
 
+def emoji_fix(s):
+    """将可能渲染为单色线条的 Unicode 符号替换为彩色 emoji"""
+    replacements = {
+        '\u2699': '\U0001F527',   # ⚙ → 🔧 (gear → wrench)
+        '\u2694': '\u2694\ufe0f', # ⚔ → ⚔️ (add VS16 for emoji presentation)
+        '\u26A1': '\u26A1\ufe0f', # ⚡ → ⚡️ (add VS16)
+        '\U0001F5E1': '\U0001F5E1\ufe0f', # 🗡 → 🗡️ (add VS16)
+        '\U0001F6E1': '\U0001F6E1\ufe0f', # 🛡 → 🛡️ (add VS16)
+    }
+    for old, new in replacements.items():
+        s = s.replace(old, new)
+    return s
+
+# emoji → MC 方块图映射
+GENRE_BLOCK_MAP = {
+    '🔥': ('RedstoneBlock', '硬核'), '🔧': ('Cobblestone', '科技'),
+    '🏰': ('Anvil', '冒险'), '🧙': ('CommandBlock', '魔法'),
+    '🌿': ('Grass', '休闲'), '🗺': ('Egg', '空岛'),
+    '🎮': ('GoldBlock', '宝可梦'), '⚡': ('RedstoneLampOn', '混合'),
+    '⚔': ('Anvil', '战斗'), '🗡': ('Anvil', 'RPG'),
+    '💀': ('RedstoneLampOff', '恐怖'), '🧟': ('RedstoneLampOff', '末日'),
+    '🛡': ('GoldBlock', '防御'), '📦': ('Fabric', '其他'),
+}
+
+def make_block_row(emoji_list, item_name, item_info, bili_url, is_seed=False):
+    """生成带 MC 方块图标的列表行 XAML"""
+    # 从 genre 字符串中提取第一个已知 emoji 来匹配方块
+    first_block = None
+    for genre_str in emoji_list:
+        for c in genre_str:
+            if c in GENRE_BLOCK_MAP:
+                first_block, label = GENRE_BLOCK_MAP[c]
+                break
+        if first_block:
+            break
+    if not first_block:
+        first_block = 'Fabric'
+    
+    xaml = f'''          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="18" Height="18"
+                    Source="{PACK_URL}{first_block}.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="{item_name}"
+                    Info="{escape(item_info)}"
+                    EventType="打开网页"
+                    EventData="{escape(bili_url)}"
+                    Type="Clickable" />
+          </Grid>'''
+    return xaml
+
+# PCL2 内嵌的 Minecraft 方块图片资源映射
+BLOCK_ICONS = {
+    'fire': 'RedstoneBlock',
+    'tech': 'Cobblestone',
+    'castle': 'Anvil',
+    'magic': 'CommandBlock',
+    'nature': 'Grass',
+    'island': 'Egg',
+    'games': 'GoldBlock',
+    'mixed': 'RedstoneLampOn',
+    'home': 'Grass',
+    'rpg': 'Anvil',
+    'sword': 'Anvil',
+    'fight': 'RedstoneBlock',
+    'horror': 'RedstoneLampOff',
+    'combat': 'RedstoneBlock',
+    'other': 'Fabric',
+}
+
+PACK_URL = 'pack://application:,,,/images/Blocks/'
+
+def block_img(block_name, size=16):
+    """生成引用方块图片的 local:MyImage XAML"""
+    return f'<local:MyImage Width="{size}" Height="{size}" Source="{PACK_URL}{block_name}.png" VerticalAlignment="Center" />'
+
+def genre_to_block(genre_emoji):
+    """根据 genre emoji 返回对应的方块名"""
+    emoji_map = {
+        '🔥': 'RedstoneBlock', '🔧': 'Cobblestone', '🏰': 'Anvil',
+        '🧙': 'CommandBlock', '🌿': 'Grass', '🗺': 'Egg',
+        '🎮': 'GoldBlock', '⚡': 'RedstoneLampOn', '⚔': 'Anvil',
+        '🗡': 'Anvil', '💀': 'RedstoneLampOff', '🧟': 'RedstoneLampOff',
+        '🛡': 'GoldBlock', '📦': 'Fabric', '🏆': 'GoldBlock',
+        '📖': 'CommandBlock',
+    }
+    return emoji_map.get(genre_emoji)
+
 def escape(s):
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return emoji_fix(s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 def load_modpacks():
     """加载整合包数据 — 种子优先，enriched覆盖，缓存补全"""
@@ -148,19 +240,17 @@ def load_download_links():
     return dl_map
 
 def make_item(mp, dl_info, index, is_seed=False):
-    """生成单个整合包: B站视频 + 版本/平台信息"""
+    """生成单个整合包行: MC方块图 + B站视频 + 版本/平台信息"""
     name = escape(mp['name'][:25])
     genres = mp.get('genres', ['📦'])
-    genre_str = ' '.join(genres[:2])
     play = mp.get('bili_play_str', '?')
     bili_url = escape(mp.get('bili_url', '#'))
-    prefix = "🆕 " if is_seed else ""
     
     # 版本
     version = mp.get('version', '')
     ver_str = f" · {version}" if version else ""
     
-    # 平台可用性 (从enriched数据)
+    # 平台可用性
     platforms = []
     if mp.get('curseforge_url'): platforms.append('CF')
     if mp.get('bbsmc_url'): platforms.append('BS')
@@ -168,12 +258,9 @@ def make_item(mp, dl_info, index, is_seed=False):
     if mp.get('modrinth_url'): platforms.append('MR')
     platform_str = f" · 📥{'/'.join(platforms)}" if platforms else ""
     
-    return f'''                    <local:MyListItem Margin="-2,0,10,0"
-                         Title="{prefix}{genre_str}  {name}"
-                         Info="▸ 🎬B站 · {play}{ver_str}{platform_str}"
-                         EventType="打开网页"
-                         EventData="{bili_url}"
-                         Type="Clickable" />'''
+    info_str = f"▸ 🎬B站 · {play}{ver_str}{platform_str}"
+    
+    return make_block_row(genres, name, info_str, bili_url, is_seed)
 def generate():
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     modpacks = load_modpacks()
@@ -207,90 +294,111 @@ def generate():
     
     # ── 快速按钮栏 ──
     buttons = [
-        ("🎬 B站MC区", "https://search.bilibili.com/all?keyword=Minecraft+整合包&order=click", "搜索Minecraft整合包视频"),
-        ("📥 CurseForge", "https://www.curseforge.com/minecraft/modpacks", "全球最大MC模组平台"),
-        ("📦 Modrinth", "https://modrinth.com/modpacks", "开源MC整合包平台"),
-        ("🏠 BBSMC", "https://bbsmc.net/modpacks", "中文MC资源下载站"),
+        ("B站MC区", "https://search.bilibili.com/all?keyword=Minecraft+整合包&order=click", "搜索Minecraft整合包视频", "RedstoneBlock"),
+        ("CurseForge", "https://www.curseforge.com/minecraft/modpacks", "全球最大MC模组平台", "Anvil"),
+        ("Modrinth", "https://modrinth.com/modpacks", "开源MC整合包平台", "CommandBlock"),
+        ("BBSMC", "https://bbsmc.net/modpacks", "中文MC资源下载站", "Grass"),
     ]
     
     btn_items = []
-    for text, url, tooltip in buttons:
+    for text, url, tooltip, block in buttons:
         btn_items.append(
-            f'               <local:MyButton Text="{text}" Margin="6,0,6,0" Padding="14,8,14,8"\n'
+            f'               <local:MyButton Margin="5,0,5,0" Padding="14,8,14,8" Height="36"\n'
             f'                    ToolTip="{tooltip}"\n'
-            f'                    EventType="打开网页" EventData="{escape(url)}" />'
+            f'                    EventType="打开网页" EventData="{escape(url)}">\n'
+            f'                    <StackPanel Orientation="Horizontal">\n'
+            f'                         <local:MyImage Width="16" Height="16"\n'
+            f'                              Source="{PACK_URL}{block}.png"\n'
+            f'                              VerticalAlignment="Center" />\n'
+            f'                         <TextBlock Text="{text}" VerticalAlignment="Center"\n'
+            f'                              Margin="4,0,0,0" />\n'
+            f'                    </StackPanel>\n'
+            f'               </local:MyButton>'
         )
     
     btn_bar = '\n'.join(btn_items)
     
     # ── 热门视频栏 ──
-    vid_icons = ["🎬", "🔧", "😂", "🏗", "🎮", "🌟", "🎨", "🎯", "⚔", "📖",
-                 "🎤", "🤣", "⏱", "🏰", "⚡", "📦", "✨", "🎞", "💯", "👥",
+    vid_icons = ["🎬", "🔧", "😂", "🏗", "🎮", "🌟", "🎨", "🎯", "⚔️", "📖",
+                 "🎤", "🤣", "⏱", "🏰", "⚡️", "📦", "✨", "🎞", "💯", "👥",
                  "🔥", "💀", "🗡️", "🛡️", "🧙", "🌍", "🏆", "🎲", "👾", "💎",
                  "🕹️", "🎭", "🗺️", "🌟", "⚗️", "🌿", "🧟", "🔮", "⛏️", "🎪"]
+    # 视频条目使用的 MC 方块图
+    vid_blocks = ['Grass', 'RedstoneBlock', 'GoldBlock', 'Cobblestone', 'Anvil', 'CommandBlock',
+                  'RedstoneLampOn', 'Fabric', 'RedstoneLampOff', 'Egg']
     vid_items = []
     for i, (title, url) in enumerate(HOT_VIDEOS):
-        icon = vid_icons[i % len(vid_icons)]
-        vid_items.append(f'''          <local:MyListItem Margin="-2,0,10,0"
-               Title="{icon}  {escape(title)}"
-               Info="▸ 点击前往 B站观看"
-               EventType="打开网页"
-               EventData="{escape(url)}"
-               Type="Clickable" />''')
+        block = vid_blocks[i % len(vid_blocks)]
+        escaped_title = escape(title)
+        vid_items.append(f'''          <Grid Margin="-2,0,10,2" VerticalAlignment="Center">
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               <local:MyImage Grid.Column="0" Width="16" Height="16"
+                    Source="{PACK_URL}{block}.png"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+               <local:MyListItem Grid.Column="1"
+                    Title="{escaped_title}"
+                    Info="▸ 点击前往 B站观看"
+                    EventType="打开网页"
+                    EventData="{escape(url)}"
+                    Type="Clickable" />
+          </Grid>''')
 
     total_modpacks = len(modpacks)
 
     xaml = f'''<!--
   ═══════════════════════════════════════════════
-  PCL2 整合包推荐引擎
-  数据源: B站 + BBSMC + CurseForge + Modrinth
-  📥BBSMC:{bbsmc_count} 🎬B站视频:{bili_count} 📥直链下载:{dl_count}
-  更新: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+   PCL2 整合包推荐引擎 · 暗黑中世纪风格设计
+   数据源: B站 + BBSMC + CurseForge + Modrinth
+   📥BBSMC:{bbsmc_count} 🎬B站视频:{bili_count} 📥直链下载:{dl_count}
+   更新: {datetime.now().strftime('%Y-%m-%d %H:%M')}
   ═══════════════════════════════════════════════
 -->
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  顶部横幅  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  ⛏ 顶部横幅 · 方块大厅   -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,16" Title="🏠">
-     <StackPanel Margin="16,18,16,14">
-          <TextBlock Text="感谢您订阅 PCL2 整合包推荐引擎" FontSize="15" FontWeight="Bold"
+     <StackPanel Margin="20,20,20,16">
+          <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
                HorizontalAlignment="Center" />
-          <TextBlock Text="聚合 B站 / BBSMC / CurseForge / Modrinth 的 Minecraft 整合包推荐主页" FontSize="11"
+          <TextBlock Text="聚合 B站 · BBSMC · CurseForge · Modrinth 的 Minecraft 整合包推荐主页" FontSize="11"
                Foreground="{{DynamicResource ColorBrush5}}"
-               HorizontalAlignment="Center" Margin="0,4,0,0" />
-          <TextBlock Text="PCL2 · 整合包推荐 · 每日自动更新 · 数据仅供参考，非广告推荐" FontSize="10"
+               HorizontalAlignment="Center" Margin="0,6,0,0" />
+          <TextBlock Text="PCL2 · 整合包推荐 · 每日更新 · 数据仅供参考" FontSize="10"
                Foreground="{{DynamicResource ColorBrush6}}"
-               HorizontalAlignment="Center" Margin="0,4,0,0" />
+               HorizontalAlignment="Center" Margin="0,5,0,0" />
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  快速导航  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
-<local:MyCard Margin="0,0,0,20" Title="⚡ 快速导航" CanSwap="True">
-     <StackPanel Margin="20,28,20,18">
+<!-- ================================ -->
+<!--  🔴 快速导航 · 四大传送门   -->
+<!-- ================================ -->
+<local:MyCard Margin="0,0,0,20" Title="⚡️ 快速导航" CanSwap="True">
+     <StackPanel Margin="24,30,24,20">
           <local:MyHint IsWarn="False" Theme="Blue"
                Text="常用资源站点一键直达 · B站搜索 + CurseForge + Modrinth + BBSMC 四大数据源"
-               Margin="0,0,0,12" />
+               Margin="0,0,0,14" />
           <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 {btn_bar}
           </StackPanel>
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  整合包推荐  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  🏗 整合包推荐 · 方块精选   -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,20" Title="Minecraft 整合包推荐" CanSwap="True">
-     <StackPanel Margin="24,35,24,15">
-          <TextBlock Text="Minecraft 整合包推荐" FontSize="22" FontWeight="Bold"
+     <StackPanel Margin="24,35,24,18">
+          <TextBlock Text="整合包推荐" FontSize="22" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
-               HorizontalAlignment="Center" Margin="0,0,0,10" />
+               HorizontalAlignment="Center" Margin="0,0,0,12" />
           <local:MyHint IsWarn="False" Theme="Yellow"
-               Text="🔥硬核 ⚙科技 🏰冒险 🧙魔法 🌿休闲 🗺空岛 🎮宝可梦 ⚡混合 | 🎬B站视频推荐 · 下方 📥下载链接"
-               Margin="0,0,0,12" />
+               Text="🔥硬核 🔧科技 🏰冒险 🧙魔法 🌿休闲 🗺空岛 🎮宝可梦 ⚡️混合 | 🎬B站视频推荐 · 下方 📥下载链接"
+               Margin="0,0,0,14" />
 
           <Grid>
                <Grid.ColumnDefinitions>
@@ -308,17 +416,17 @@ def generate():
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  MC热门视频  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  🎬 视频推荐 · 映像大厅   -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,20" Title="Minecraft 视频推荐" CanSwap="True" IsSwaped="True">
-     <StackPanel Margin="24,30,24,15">
-          <TextBlock Text="Minecraft 视频推荐" FontSize="22" FontWeight="Bold"
+     <StackPanel Margin="24,32,24,18">
+          <TextBlock Text="视频推荐" FontSize="22" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
-               HorizontalAlignment="Center" Margin="0,0,0,8" />
+               HorizontalAlignment="Center" Margin="0,0,0,10" />
           <local:MyHint IsWarn="False" Theme="Red"
                Text="🎬 知名UP主空间 + 🔥 热门搜索主题 · 涵盖实况/红石/建筑/模组/动画/速通"
-               Margin="0,0,0,12" />
+               Margin="0,0,0,14" />
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -340,36 +448,38 @@ def generate():
      </StackPanel>
 </local:MyCard>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ═══  页脚  ═══ -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ================================ -->
+<!--  ⛏ 关于 · 方块工坊      -->
+<!-- ================================ -->
 <local:MyCard Margin="0,0,0,0" Title="关于">
-     <StackPanel Margin="24,32,24,28">
+     <StackPanel Margin="24,35,24,30">
+
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                </Grid.ColumnDefinitions>
                <StackPanel Grid.Column="0">
-                    <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
-                         Foreground="{{DynamicResource ColorBrush1}}" Margin="0,0,0,8" />
+                    <TextBlock Text="📜 PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
+                         Foreground="{{DynamicResource ColorBrush1}}" Margin="0,0,0,10" />
                     <TextBlock Text="By GDSGDHG · 版本号见 output/version.txt" FontSize="13" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush4}}" Margin="0,0,0,6" />
+                         Foreground="{{DynamicResource ColorBrush4}}" Margin="0,0,0,8" />
                     <TextBlock Text="数据来源: B站视频 + CurseForge/Modrinth 下载" FontSize="12" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush5}}" Margin="0,0,0,4" />
+                         Foreground="{{DynamicResource ColorBrush5}}" Margin="0,0,0,6" />
                     <TextBlock Text="最后更新: {datetime.now().strftime('%Y-%m-%d')} · 共{total_modpacks}个整合包" FontSize="11" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,4" />
+                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,6" />
                     <TextBlock Text="数据仅供参考，非广告推荐" FontSize="10" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush7}}" Margin="0,0,0,2" />
+                         Foreground="{{DynamicResource ColorBrush7}}" Margin="0,0,0,4" />
                     <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11" TextWrapping="Wrap"
                          Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,0" />
                </StackPanel>
                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <local:MyButton Text="⟳ 刷新主页" Padding="16,10,16,10"
+                    <local:MyButton Text="⟳ 刷新" Width="80" Padding="12,8,12,8"
+                         ToolTip="刷新当前主页内容"
                          EventType="刷新主页" Margin="0,0,0,8" />
-                    <local:MyButton Text="📮 反馈" Padding="16,10,16,10"
+                    <local:MyButton Text="📮 反馈" Width="80" Padding="12,8,12,8"
                          ToolTip="前往GitCode提交Issue"
-                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" />
+                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" Margin="0,0,0,0" />
                </StackPanel>
           </Grid>
      </StackPanel>
