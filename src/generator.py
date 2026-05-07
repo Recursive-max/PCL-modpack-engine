@@ -360,7 +360,7 @@ def generate():
 <!-- ================================ -->
 <!--  ⛏ 顶部横幅 · 方块大厅   -->
 <!-- ================================ -->
-<local:MyCard Margin="0,0,0,16" Title="🏠">
+<local:MyCard Margin="0,0,0,16" Title="">
      <StackPanel Margin="20,20,20,16">
           <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
@@ -391,7 +391,7 @@ def generate():
 <!-- ================================ -->
 <!--  🏗 整合包推荐 · 方块精选   -->
 <!-- ================================ -->
-<local:MyCard Margin="0,0,0,20" Title="Minecraft 整合包推荐" CanSwap="True">
+<local:MyCard Margin="0,0,0,20" Title="Minecraft 整合包推荐" CanSwap="True" IsSwaped="True">
      <StackPanel Margin="24,35,24,18">
           <TextBlock Text="整合包推荐" FontSize="22" FontWeight="Bold"
                Foreground="{{DynamicResource ColorBrush1}}"
@@ -452,26 +452,21 @@ def generate():
 <!--  ⛏ 关于 · 方块工坊      -->
 <!-- ================================ -->
 <local:MyCard Margin="0,0,0,0" Title="关于">
-     <StackPanel Margin="24,35,24,30">
-
+     <StackPanel Margin="24,30,24,28">
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                </Grid.ColumnDefinitions>
                <StackPanel Grid.Column="0">
-                    <TextBlock Text="📜 PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
-                         Foreground="{{DynamicResource ColorBrush1}}" Margin="0,0,0,10" />
-                    <TextBlock Text="By GDSGDHG · 版本号见 output/version.txt" FontSize="13" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush4}}" Margin="0,0,0,8" />
-                    <TextBlock Text="数据来源: B站视频 + CurseForge/Modrinth 下载" FontSize="12" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush5}}" Margin="0,0,0,6" />
-                    <TextBlock Text="最后更新: {datetime.now().strftime('%Y-%m-%d')} · 共{total_modpacks}个整合包" FontSize="11" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,6" />
-                    <TextBlock Text="数据仅供参考，非广告推荐" FontSize="10" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush7}}" Margin="0,0,0,4" />
-                    <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11" TextWrapping="Wrap"
-                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,0" />
+                    <TextBlock Text="PCL2 整合包推荐引擎" FontSize="18" FontWeight="Bold"
+                         Foreground="{{DynamicResource ColorBrush1}}" Margin="0,0,0,6" />
+                    <TextBlock Text="By GDSGDHG" FontSize="12"
+                         Foreground="{{DynamicResource ColorBrush4}}" Margin="0,0,0,6" />
+                    <TextBlock Text="致谢: PCL2 · B站创作者 · 社区维护者" FontSize="11"
+                         Foreground="{{DynamicResource ColorBrush6}}" Margin="0,0,0,2" />
+                    <TextBlock Text="数据仅供参考，非广告推荐" FontSize="10"
+                         Foreground="{{DynamicResource ColorBrush7}}" />
                </StackPanel>
                <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <local:MyButton Text="⟳ 刷新" Width="80" Padding="12,8,12,8"
@@ -479,7 +474,7 @@ def generate():
                          EventType="刷新主页" Margin="0,0,0,8" />
                     <local:MyButton Text="📮 反馈" Width="80" Padding="12,8,12,8"
                          ToolTip="前往GitCode提交Issue"
-                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" Margin="0,0,0,0" />
+                         EventType="打开网页" EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues" />
                </StackPanel>
           </Grid>
      </StackPanel>
