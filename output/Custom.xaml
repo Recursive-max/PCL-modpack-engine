@@ -1379,7 +1379,7 @@
                     <local:MyButton BorderThickness="0" Padding="14,6,14,6" Margin="0,6,0,0"
                          ToolTip="前往GitCode提交Issue"
                          EventType="打开网页"
-                         EventData="https://gitcode.com/2401_84211770/PCL2-modpack-engine/issues">
+                         EventData="https://github.com/Recursive-max/PCL2-modpack-engine/issues">
                          <StackPanel Orientation="Horizontal">
                               <TextBlock Text="📮" FontSize="12" FontWeight="Bold"
                                    Foreground="{DynamicResource ColorBrush1}"
