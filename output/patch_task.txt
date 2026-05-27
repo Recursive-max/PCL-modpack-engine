@@ -1,0 +1,20 @@
+修改 /home/ftc13/pcl2/output/Custom.xaml 文件，做三件事：
+
+1. 反馈链接替换：
+   找到行包含 EventData="https://gitcode.com/2401_84211770/PCL-modpack-engine/discussions"
+   替换为: EventData="https://github.com/Meloong-Git/PCL/discussions/8588"
+
+2. 图标替换：
+   a) 找到行包含 Text="↻" 的 TextBlock，替换为:
+      <local:MyImage Width="16" Height="16" Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,4,0" />
+   
+   b) 找到行包含 Text="📮" 的 TextBlock，替换为:
+      <local:MyImage Width="16" Height="16" Source="pack://application:,,,/images/Blocks/Anvil.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,4,0" />
+
+   注意：替换后要把旧 TextBlock 的 Foreground 和 VerticalAlignment 残留行一并删除。
+
+3. 按钮边框：
+   找到两处 BorderThickness="0" Padding="14,6,14,6"
+   改为 BorderThickness="0" Padding="4,2,4,2"
+
+修改完后输出修改了哪些行 + 最终确认。

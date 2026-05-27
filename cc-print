@@ -1,0 +1,10 @@
+#!/bin/bash
+# cc print mode - 非交互式，直接输出结果
+ENV_FILE="$HOME/.openclaw/.env.local"
+if [ -f "$ENV_FILE" ]; then
+    DEEPSEEK_KEY=*** DEEPSEEK_API_KEY "$ENV_FILE" | head -1 | cut -d= -f2-)
+fi
+export ANTHROPIC_API_KEY="***"
+export ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
+export ANTHROPIC_MODEL="deepseek-v4-flash"
+exec claude --print "$@"

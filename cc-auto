@@ -1,0 +1,10 @@
+#!/bin/bash
+# cc auto mode
+ENV_FILE="\/home/ftc13/.openclaw/.env.local"
+DEEPSEEK_KEY=""
+if [ -f "" ]; then
+    DEEPSEEK_KEY=\$(grep DEEPSEEK_API_KEY "" | head -1 | cut -d= -f2-)
+fi
+export ANTHROPIC_API_KEY="\"
+export ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
+exec claude --dangerously-skip-permissions --permission-mode bypassPermissions "\"
